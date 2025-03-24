@@ -1,7 +1,8 @@
 import { Menu, UserRound, UserPlus, UserMinus, UserCheck, Users } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../context/GlobalContext";
 
 const SIDEBAR_ITEMS = [
   { name: "Mijozlar", icon: Users, color: "#EC4899", href: "/" },
@@ -13,6 +14,8 @@ const SIDEBAR_ITEMS = [
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { theme } = useContext(GlobalContext)
+
 
   return (
     <motion.div
@@ -20,25 +23,25 @@ const Sidebar = () => {
         }`}
       animate={{ width: isSidebarOpen ? 256 : 80 }}
     >
-      <div className='h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 flex flex-col '>
+      <div className='h-full bg-base-100 p-4 flex flex-col '>
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className='p-2 rounded-full hover:bg-gray-700 transition-colors max-w-fit'
+          className='p-2 rounded-full hover:bg-base-300 transition-colors max-w-fit'
         >
-          <Menu size={24} />
+          <Menu size={24} className="text-base-content" />
         </motion.button>
 
         <nav className='mt-8 flex-grow'>
           {SIDEBAR_ITEMS.map((item) => (
             <Link key={item.href} to={item.href}>
-              <motion.div className='flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors mb-2'>
+              <motion.div className='flex items-center p-4 text-sm font-medium rounded-lg hover:bg-base-300 transition-colors mb-2'>
                 <item.icon size={20} style={{ color: item.color, minWidth: "20px" }} />
                 <AnimatePresence>
                   {isSidebarOpen && (
                     <motion.span
-                      className='ml-4 whitespace-nowrap'
+                      className='ml-4 whitespace-nowrap text-base-content'
                       initial={{ opacity: 0, width: 0 }}
                       animate={{ opacity: 1, width: "auto" }}
                       exit={{ opacity: 0, width: 0 }}

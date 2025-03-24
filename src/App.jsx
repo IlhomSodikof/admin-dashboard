@@ -9,15 +9,19 @@ import SalesPage from "./pages/SalesPage";
 import OrdersPage from "./pages/OrdersPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import SettingsPage from "./pages/SettingsPage";
+import { GlobalContext } from "./components/context/GlobalContext";
+import { useContext } from "react";
 
 function App() {
+  const { theme } = useContext(GlobalContext)
+
   return (
-    <div className='flex h-screen bg-gray-900 text-gray-100 overflow-hidden'>
+    <div className='flex h-screen bg-[#1f1a2a3f] text-gray-100  overflow-hidden' style={{ backgroundColor: theme == "light" ? "#ecf2f7" : "#1f1a2a87" }}>
       {/* BG */}
-      <div className='fixed inset-0 z-0'>
-        <div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 opacity-80' />
+      {/* <div className='fixed inset-0 z-0'>
+        <div className='absolute inset-0 bg-gradient-to-br from-base-300 via-gray-200 to-base-300 opacity-80' />
         <div className='absolute inset-0 backdrop-blur-sm' />
-      </div>
+      </div> */}
 
       <Sidebar />
       <Routes>
