@@ -5,9 +5,18 @@ import { Bell, LogOut, Moon, Sun } from "lucide-react";
 
 import { useContext, useEffect, } from "react";
 import { GlobalContext } from "../context/GlobalContext";
+import Dropdown from "./Dropdown";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { theme, toggleTheme } = useContext(GlobalContext)
+  const navigate = useNavigate();
+  const { theme, toggleTheme, dispatch } = useContext(GlobalContext)
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Tokenni o'chirish
+    dispatch({ type: "LOGOUT" }); // Contextdagi foydalanuvchini tozalash
+    navigate("/login"); // Login sahifasiga yo'naltirish
+  };
+
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -18,12 +27,17 @@ const Header = () => {
   return (
     <>
 
-      <header className=' bg-base-100 bg-opacity-50 backdrop-blur-md shadow-lg  flex h-[60px] items-center justify-between px-28'>
+      <header className=' relative z-20 bg-base-100 bg-opacity-50 backdrop-blur-md shadow-lg  flex h-[60px] items-center justify-between px-28'>
 
         <div className="flex items-centergap-x-3">
 
         </div>
         <div className="flex items-center gap-4">
+          {/* <div className="relative "> */}
+          <Dropdown />
+          {/* </div> */}
+
+
           <label className="swap swap-rotate items-center ">
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" onClick={() => toggleTheme("eee")} />
@@ -38,10 +52,7 @@ const Header = () => {
 
           </label>
 
-          <div className="btn-ghost relative">
-            <Bell size={20} className="text-orange-500" />
-            <div className="  absolute top-[-1px] left-[0.70rem] p-[0.15rem] rounded-full  bg-base-100"><span className="bg-red-600 rounded-full block w-[0.35rem] h-[0.35rem]"></span></div>
-          </div>
+
           <span className="px-5 text-sm font-bold text-base-content">Name family</span>
           {/* <button className="size-8 overflow-hidden rounded-full">
             <img
@@ -50,7 +61,7 @@ const Header = () => {
               className="size-full object-cover"
             />
           </button> */}
-          <button className="btn-ghost">
+          <button className="btn-ghost" onClick={handleLogout}>
             <LogOut className="text-base-content" size={20} />
           </button>
         </div>

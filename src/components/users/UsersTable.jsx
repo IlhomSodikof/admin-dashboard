@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { GlobalContext } from "../context/GlobalContext";
 
-const userData = [
-  { id: 1, name: "Janona", region: "Buxoro", phone: "+998999797729", role: "Botex", status: "Fa'ol", href: "/details" },
-  { id: 2, name: "Bahora", region: "Namangan", phone: "+998999797729", role: "Popa", status: "Fa'ol", href: "/details" },
-  { id: 3, name: "Aisha", region: "Xoarazm", phone: "+998999797729", role: "Botex", status: "Sog'aygan", href: "/details" },
-  { id: 4, name: "Elenora", region: "Toshkent", phone: "+998999797729", role: "Botex", status: "Fa'ol", href: "/details" },
-  { id: 5, name: "Guzal", region: "Tosh vil", phone: "+998999797729", role: "Plastmix", status: "Qarizdor", href: "/details" },
-];
 
-const UsersTable = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState(userData);
 
-  const handleSearch = (e) => {
-    const term = e.target.value.toLowerCase();
-    setSearchTerm(term);
-    const filtered = userData.filter(
-      (user) => user.name.toLowerCase().includes(term) || user.region.toLowerCase().includes(term)
-    );
-    setFilteredUsers(filtered);
-  };
+const UsersTable = ({ apiData }) => {
+  const navigate = useNavigate();
+
+  // const { theme } = useContext(GlobalContext)
+  console.log(apiData, "bu global context",);
+
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [filteredUsers, setFilteredUsers] = useState(userData);
+
+  // const handleSearch = (e) => {
+  //   const term = e.target.value.toLowerCase();
+  //   setSearchTerm(term);
+  //   const filtered = userData.filter(
+  //     (user) => user.name.toLowerCase().includes(term) || user.region.toLowerCase().includes(term)
+  //   );
+  //   setFilteredUsers(filtered);
+  // };
 
   return (
     <motion.div
@@ -31,19 +31,20 @@ const UsersTable = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <div className='flex justify-between items-center mb-6'>
+      {/* <div className='flex justify-between items-center mb-6'>
         <h2 className='text-xl font-semibold text-base-content'>Mijozlar</h2>
         <div className='relative'>
           <input
             type='text'
             placeholder='Search users...'
-            className=' text-base-content bg-eleg border border-gray-400 placeholder-gray-400 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            className=' text-base-content bg-eleg placeholder-gray-400 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            style={{ backgroundColor: theme == "light" ? "#ecf2f7" : "#1f1a2a87" }}
             value={searchTerm}
-            onChange={handleSearch}
+          // onChange={handleSearch}
           />
           <Search className='absolute left-3 top-2.5 text-gray-400' size={18} />
         </div>
-      </div>
+      </div> */}
 
       <div className='overflow-x-auto'>
         <table className='min-w-full divide-y divide-gray-700'>
@@ -74,7 +75,7 @@ const UsersTable = () => {
           </thead>
 
           <tbody className='divide-y divide-gray-300'>
-            {filteredUsers.map((user) => (
+            {apiData?.map((user) => (
               <motion.tr
                 key={user.id}
                 initial={{ opacity: 0 }}
@@ -89,11 +90,11 @@ const UsersTable = () => {
                     <div className="pr-3 text-base-content">{user.id}</div>
                     <div className='flex-shrink-0 h-10 w-10'>
                       <div className='h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold'>
-                        {user.name.charAt(0)}
+                        {user?.full_name.charAt(0)}
                       </div>
                     </div>
                     <div className='ml-4'>
-                      <div className='text-sm font-medium text-base-content'>{user.name}</div>
+                      <div className='text-sm font-medium text-base-content'>{user?.full_name}</div>
                     </div>
                   </div>
                 </td>
@@ -108,7 +109,7 @@ const UsersTable = () => {
                 </td> */}
                 <td className='px-6 py-4 whitespace-nowrap'>
                   <span className=' inline-flex text-xs leading-5 font-semibold rounded-full  text-base-content'>
-                    {user.phone}
+                    {user?.phone_number}
                   </span>
                 </td>
                 <td className='px-6 py-4 whitespace-nowrap'>
@@ -123,9 +124,9 @@ const UsersTable = () => {
                 </td>
 
                 <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-300'>
-                  <Link to={`/details`}>
-                    <button className='text-indigo-400 hover:text-indigo-300'>info</button>
-                  </Link>
+                  {/* <Link to={`/details`}> */}
+                  <button className='text-indigo-400 hover:text-indigo-300' onClick={() => navigate(`/details/${user?.id}`)}>info</button>
+                  {/* </Link> */}
 
                 </td>
               </motion.tr>

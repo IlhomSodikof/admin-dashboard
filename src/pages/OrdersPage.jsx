@@ -7,6 +7,9 @@ import DailyOrders from "../components/orders/DailyOrders";
 import OrderDistribution from "../components/orders/OrderDistribution";
 import OrdersTable from "../components/orders/OrdersTable";
 import UsersTable from "../components/users/UsersTable";
+import { useEffect, useState } from "react";
+import { DataService } from "../components/config/dataService";
+import { endpoints } from "../components/config/endpoints";
 
 const orderStats = {
   totalOrders: "1,234",
@@ -16,6 +19,22 @@ const orderStats = {
 };
 
 const OrdersPage = () => {
+
+  const [apiData, setApiData] = useState();
+  const fetchData = async () => {
+    const response = await DataService.get(endpoints.treated);
+    // console.log(response, "havolalar");
+    setApiData(response?.results);
+    // console.log(response?.results);
+
+  };
+  useEffect(() => {
+    fetchData();
+
+
+  }, []);
+  //
+
   return (
     <div className='flex-1 relative z-10 overflow-auto'>
       <Header title={"Orders"} />
@@ -43,7 +62,7 @@ const OrdersPage = () => {
 					<OrderDistribution />
 				</div> */}
 
-        <UsersTable />
+        <UsersTable apiData={apiData} />
 
 
         {/* <OrdersTable /> */}

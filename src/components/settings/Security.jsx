@@ -1,28 +1,20 @@
 import { Lock } from "lucide-react";
 import SettingSection from "./SettingSection";
-import ToggleSwitch from "./ToggleSwitch";
 import { useState } from "react";
 
-const Security = () => {
-	const [twoFactor, setTwoFactor] = useState(false);
+const Security = ({ apiData, title }) => {
+  const [twoFactor, setTwoFactor] = useState(false);
 
-	return (
-		<SettingSection icon={Lock} title={"Security"}>
-			<ToggleSwitch
-				label={"Two-Factor Authentication"}
-				isOn={twoFactor}
-				onToggle={() => setTwoFactor(!twoFactor)}
-			/>
-			<div className='mt-4'>
-				<button
-					className='bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded 
-        transition duration-200
-        '
-				>
-					Change Password
-				</button>
-			</div>
-		</SettingSection>
-	);
+  return (
+    <SettingSection title={title} >
+
+      <div className='mt-4 text-base-content'>
+        <p class="text-base md:text-lg lg:text-xl font-medium text-base-content leading-relaxed break-words max-w-full">
+          {apiData}
+        </p>
+
+      </div>
+    </SettingSection>
+  );
 };
 export default Security;

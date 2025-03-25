@@ -14,7 +14,7 @@ const DangerZone = () => {
         <h2 className='text-xl font-semibold text-gray-100'>Xavfli hudud (Danger Zone)</h2>
       </div>
       <p className='text-gray-300 mb-4'>
-        Hisobingizni va undagi barcha kontentni butunlay o‘chiring.</p>
+        Mijoz hisobini  va undagi barcha kontentni butunlay o‘chiring.</p>
       <button
         className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded
       transition duration-200'

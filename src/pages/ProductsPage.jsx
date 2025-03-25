@@ -8,8 +8,30 @@ import CategoryDistributionChart from "../components/overview/CategoryDistributi
 import SalesTrendChart from "../components/products/SalesTrendChart";
 import ProductsTable from "../components/products/ProductsTable";
 import UsersTable from "../components/users/UsersTable";
+import { useContext, useEffect, useState } from "react";
+import { DataService } from "../components/config/dataService";
+import { endpoints } from "../components/config/endpoints";
+import { GlobalContext } from "../components/context/GlobalContext";
 
 const ProductsPage = () => {
+  const { dataFn } = useContext(GlobalContext)
+
+  const [apiData, setApiData] = useState();
+  const fetchData = async () => {
+    const response = await DataService.get(endpoints.debtors);
+    // console.log(response, "havolalar");
+    setApiData(response?.results);
+    dataFn(response)
+    // console.log(response?.results);
+
+  };
+  useEffect(() => {
+    fetchData();
+
+
+  }, []);
+  //
+
   return (
     <div className='flex-1 overflow-auto relative z-10'>
       <Header title='Products' />
@@ -28,7 +50,7 @@ const ProductsPage = () => {
           <StatCard name='Total Revenue' icon={DollarSign} value={"$543,210"} color='#EF4444' />
         </motion.div> */}
 
-        <UsersTable />
+        <UsersTable apiData={apiData} />
 
         {/* CHARTS */}
         {/* <div className='grid grid-col-1 lg:grid-cols-2 gap-8'>

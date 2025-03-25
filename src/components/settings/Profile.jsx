@@ -1,8 +1,32 @@
 import { User, Camera, CircleAlert, CircleCheckBig, OctagonX } from "lucide-react";
 import SettingSection from "./SettingSection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { DataService } from "../config/dataService";
+import { endpoints } from "../config/endpoints";
+import { useParams } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({ apiData }) => {
+  const route = useParams()
+  console.log("ichkarida", apiData);
+
+  const [apiDataIn, setApiDataIn] = useState([]);
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await DataService.get(endpoints.patientByid(route?.id));
+  //     setApiData(response);
+  //     console.log("BU TEAM", response);
+
+  //   } catch (error) {
+  //     console.error("Error fetching category data:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchData();
+
+
+  // }, []);
+
+
   const [status, setStatus] = useState("Fa'ol"); // Boshlang'ich status
 
   const handleStatusChange = (e) => {
@@ -43,22 +67,27 @@ const Profile = () => {
           <div className='flex flex-col sm:flex-row justify-around gap-10 items-center'>
             <div className="flex items-center flex-col gap-1">
               <img
-                src={formData.profilePic}
+                src={apiData?.photo}
                 alt='Profile'
                 className='rounded-md ml-5 w-40 h-40 object-cover'
               />
-              <h3 className='text-lg ml-5 font-semibold text-gray-100'>{formData.name}</h3>
-              {status == "Qarizdor" ? (<p className=" ml-5 text-yellow-400 flex gap-1"> <span className='font-semibold text-yellow-400'>Status:</span> {status} <CircleAlert className="w-5 ml-1" /></p>) : status == "Fa'ol" ? (<p className=" ml-5 text-green-400 flex gap-1"> <span className='font-semibold text-green-400'>Status:</span> {formData.status}   <CircleCheckBig className="w-5 ml-1" /></p>) : (<p className=" ml-5 text-[crimson] flex gap-1"> <span className='font-semibold text-[crimson]'>Status:</span> {formData.status} <OctagonX className="w-5 ml-1" /></p>)}
+              <h3 className='text-lg ml-5 font-semibold text-base-content'>{apiData?.full_name}</h3>
+              {apiData?.status == "Qarizdor" ? (<p className=" ml-5 text-yellow-400 flex gap-1"> <span className='font-semibold text-yellow-400'>Status:</span> {apiData?.status} <CircleAlert className="w-5 ml-1" /></p>) : apiData?.status == "Fa'ol" ? (<p className=" ml-5 text-green-400 flex gap-1"> <span className='font-semibold text-green-400'>Status:</span> {formData.status}   <CircleCheckBig className="w-5 ml-1" /></p>) : (<p className=" ml-5 text-[crimson] flex gap-1"> <span className='font-semibold text-[crimson]'>Status:</span> {formData.status} <OctagonX className="w-5 ml-1" /></p>)}
 
             </div>
 
 
             <div className="flex flex-col gap-3">
-              <p className='text-gray-400'><span className='font-semibold text-white'>Yashash manzili:</span> {formData.address}</p>
-              <p className='text-gray-400'><span className='font-semibold text-white'>Email:</span> {formData.email}</p>
-              <p className="text-gray-400"> <span className='font-semibold text-white'>Telefon:</span> {formData.phone}</p>
+              <p className='text-gray-400'><span className='font-semibold text-base-content'>Yashash manzili:</span> {apiData?.region?.name}</p>
+              {/* <p className='text-gray-400'><span className='font-semibold text-base-content'>Email:</span> {formData.email}</p> */}
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>Telefon:</span> {apiData?.phone_number}</p>
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>Murojat turi:</span> {apiData?.type_disease?.name}</p>
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>Jami to'lov summasi:</span> {apiData?.total_payment_due}</p>
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>To'langan summa:</span> {apiData?.total_paid}</p>
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>To'lanmagan qarizdorlik:</span> {apiData?.remaining_debt}</p>
+
               {/* {formData.status == "Qarizdor" ? (<p className="text-yellow-400 flex gap-1"> <span className='font-semibold text-yellow-400'>Status:</span> {formData.status} <CircleAlert className="w-5 ml-1" /></p>) : formData.status == "Fa'ol" ? (<p className="text-green-400 flex gap-1"> <span className='font-semibold text-green-400'>Status:</span> {formData.status}   <CircleCheckBig className="w-5 ml-1" /></p>) : (<p className="text-[crimson] flex gap-1"> <span className='font-semibold text-[crimson]'>Status:</span> {formData.status} <OctagonX className="w-5 ml-1" /></p>)} */}
-              <p className="text-gray-400"> <span className='font-semibold text-white'>Sana:</span> {formData.date}</p>
+              <p className="text-gray-400"> <span className='font-semibold text-base-content'>Sana:</span> {apiData?.created_at}</p>
 
             </div>
             <div className="flex flex-col gap-3">
