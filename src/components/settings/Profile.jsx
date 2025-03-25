@@ -1,7 +1,7 @@
 import { User, Camera, CircleAlert, CircleCheckBig, OctagonX } from "lucide-react";
 import SettingSection from "./SettingSection";
 import { useEffect, useState } from "react";
-import { DataService } from "../config/dataService";
+import { DataService } from "../config/DataService";
 import { endpoints } from "../config/endpoints";
 import { useParams } from "react-router-dom";
 

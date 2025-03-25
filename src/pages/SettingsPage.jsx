@@ -7,7 +7,7 @@ import Profile from "../components/settings/Profile";
 import Security from "../components/settings/Security";
 import { useEffect, useState } from "react";
 import { endpoints } from "../components/config/endpoints";
-import { DataService } from "../components/config/dataService";
+import { DataService } from "../components/config/DataService";
 import { motion } from "framer-motion";
 
 const SettingsPage = () => {
