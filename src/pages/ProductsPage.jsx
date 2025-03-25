@@ -9,9 +9,10 @@ import SalesTrendChart from "../components/products/SalesTrendChart";
 import ProductsTable from "../components/products/ProductsTable";
 import UsersTable from "../components/users/UsersTable";
 import { useContext, useEffect, useState } from "react";
-import { DataService } from "../components/config/DataService";
+// import { DataService } from "../components/config/DataService";
 import { endpoints } from "../components/config/endpoints";
 import { GlobalContext } from "../components/context/GlobalContext";
+import { DataService } from "../components/config/DataService";
 
 const ProductsPage = () => {
   const { dataFn } = useContext(GlobalContext)

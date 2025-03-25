@@ -8,8 +8,8 @@ import OrderDistribution from "../components/orders/OrderDistribution";
 import OrdersTable from "../components/orders/OrdersTable";
 import UsersTable from "../components/users/UsersTable";
 import { useEffect, useState } from "react";
-import { DataService } from "../components/config/DataService";
 import { endpoints } from "../components/config/endpoints";
+import { DataService } from "../components/config/DataService";
 
 const orderStats = {
   totalOrders: "1,234",

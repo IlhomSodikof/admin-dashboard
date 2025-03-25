@@ -7,8 +7,9 @@ import Profile from "../components/settings/Profile";
 import Security from "../components/settings/Security";
 import { useEffect, useState } from "react";
 import { endpoints } from "../components/config/endpoints";
-import { DataService } from "../components/config/DataService";
+// import { DataService } from "../components/config/DataService";
 import { motion } from "framer-motion";
+import { DataService } from "../components/config/DataService";
 
 const SettingsPage = () => {
   const route = useParams()

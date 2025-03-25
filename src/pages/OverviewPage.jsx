@@ -8,8 +8,8 @@ import CategoryDistributionChart from "../components/overview/CategoryDistributi
 import SalesChannelChart from "../components/overview/SalesChannelChart";
 import UsersTable from "../components/users/UsersTable";
 import { endpoints } from "../components/config/endpoints";
-import { DataService } from "../components/config/DataService";
 import { useEffect, useState } from "react";
+import { DataService } from "../components/config/DataService";
 
 const OverviewPage = () => {
 
