@@ -1,15 +1,15 @@
 import { User, Camera, CircleAlert, CircleCheckBig, OctagonX } from "lucide-react";
 import SettingSection from "./SettingSection";
 import { useEffect, useState } from "react";
-// import { DataService } from "../config/DataService";
-import { endpoints } from "../config/endpoints";
+// import { endpoints } from "../config/endpoints";
 import { useParams } from "react-router-dom";
+// import { DataService } from "../config/DataService";
 
 const Profile = ({ apiData }) => {
   const route = useParams()
   console.log("ichkarida", apiData);
 
-  const [apiDataIn, setApiDataIn] = useState([]);
+  // const [apiDataIn, setApiDataIn] = useState([]);
   // const fetchData = async () => {
   //   try {
   //     const response = await DataService.get(endpoints.patientByid(route?.id));

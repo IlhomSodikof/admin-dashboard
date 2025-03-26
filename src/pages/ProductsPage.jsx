@@ -9,20 +9,17 @@ import SalesTrendChart from "../components/products/SalesTrendChart";
 import ProductsTable from "../components/products/ProductsTable";
 import UsersTable from "../components/users/UsersTable";
 import { useContext, useEffect, useState } from "react";
-// import { DataService } from "../components/config/DataService";
 import { endpoints } from "../components/config/endpoints";
 import { GlobalContext } from "../components/context/GlobalContext";
 import { DataService } from "../components/config/DataService";
 
-const ProductsPage = () => {
-  const { dataFn } = useContext(GlobalContext)
 
+const ProductsPage = () => {
   const [apiData, setApiData] = useState();
   const fetchData = async () => {
-    const response = await DataService.get(endpoints.debtors);
+    const response = await DataService.get(endpoints.treatment);
     // console.log(response, "havolalar");
     setApiData(response?.results);
-    dataFn(response)
     // console.log(response?.results);
 
   };
@@ -32,6 +29,7 @@ const ProductsPage = () => {
 
   }, []);
   //
+
 
   return (
     <div className='flex-1 overflow-auto relative z-10'>
