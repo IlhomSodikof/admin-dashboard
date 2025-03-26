@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { DataService } from "../config/DataService";
 
-const Profile = ({ apiData }) => {
+// const Profile = ({ apiData }) => {
+// bu comentdan chiqarilsin ////////////////
+const Profile = () => {
   const route = useParams()
   console.log("ichkarida", apiData);
 
@@ -32,13 +34,13 @@ const Profile = ({ apiData }) => {
   const handleStatusChange = (e) => {
     setStatus(e.target.value); // Tanlangan qiymatni yangilash
   };
-  const [formData, setFormData] = useState({
+  const [apiData, setFormData] = useState({
     name: "Ganiyeva Gulchexra",
     address: "Tashkent",
     email: "Guli.chex@gmail.com",
     phone: "+998 99 999 99 99",
     date: "2025-03-23",
-    profilePic: "https://randomuser.me/api/portraits/men/3.jpg", // Boshlang'ich surat
+    photo: "https://randomuser.me/api/portraits/men/3.jpg", // Boshlang'ich surat
     status: "Sog'aygan"
   });
   const [isEditing, setIsEditing] = useState(true); // Tahrirlash rejimi

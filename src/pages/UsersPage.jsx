@@ -8,8 +8,8 @@ import UserGrowthChart from "../components/users/UserGrowthChart";
 import UserActivityHeatmap from "../components/users/UserActivityHeatmap";
 import UserDemographicsChart from "../components/users/UserDemographicsChart";
 import { useEffect, useState } from "react";
-import { endpoints } from "../components/config/endpoints";
-import { DataService } from "../components/config/DataService";
+// import { endpoints } from "../components/config/endpoints";
+// import { DataService } from "../components/config/DataService";
 
 const userStats = {
   totalUsers: 152845,
@@ -20,34 +20,34 @@ const userStats = {
 
 const UsersPage = () => {
 
-  const [apiData, setApiData] = useState();
-  const fetchData = async () => {
-    const response = await DataService.get(endpoints.all);
-    // console.log(response, "havolalar");
-    setApiData(response?.results);
-    // console.log(response?.results);
+  // const [apiData, setApiData] = useState();
+  // const fetchData = async () => {
+  //   const response = await DataService.get(endpoints.all);
+  //   // console.log(response, "havolalar");
+  //   setApiData(response?.results);
+  //   // console.log(response?.results);
 
-  };
-  useEffect(() => {
-    fetchData();
-
-
-  }, []);
-  //
+  // };
+  // useEffect(() => {
+  //   fetchData();
 
 
-  const [apiDataSt, setApiDataSt] = useState();
-  const fetchDataSt = async () => {
-    const response = await DataService.get(endpoints.statistic);
-    console.log(response, "statistic");
-    setApiDataSt(response);
-    // console.log(response?.results);
+  // }, []);
+  // //
 
-  };
-  useEffect(() => {
-    fetchDataSt();
-  }, []);
-  //
+
+  // const [apiDataSt, setApiDataSt] = useState();
+  // const fetchDataSt = async () => {
+  //   const response = await DataService.get(endpoints.statistic);
+  //   console.log(response, "statistic");
+  //   setApiDataSt(response);
+  //   // console.log(response?.results);
+
+  // };
+  // useEffect(() => {
+  //   fetchDataSt();
+  // }, []);
+  // //
 
 
   return (
@@ -62,7 +62,7 @@ const UsersPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <StatCard
+          {/* <StatCard
             name='Jami mijozlar'
             icon={UsersIcon}
             value={apiDataSt?.total_patients}
@@ -75,10 +75,15 @@ const UsersPage = () => {
             value={apiDataSt?.debtor}
             color='#F59E0B'
           />
-          <StatCard name="Sog'aygan mijozlar" icon={UserRound} value={apiDataSt?.treated} color='#EF4444' />
+          <StatCard name="Sog'aygan mijozlar" icon={UserRound} value={apiDataSt?.treated} color='#EF4444' /> */}
         </motion.div>
 
-        <UsersTable apiData={apiData} />
+        {/* <UsersTable apiData={apiData} /> */}
+
+        {/* sho'tgacha koment pasi kerekmas */}
+
+
+
 
         {/* USER CHARTS */}
         {/* <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>

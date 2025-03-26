@@ -8,8 +8,8 @@ import OrderDistribution from "../components/orders/OrderDistribution";
 import OrdersTable from "../components/orders/OrdersTable";
 import UsersTable from "../components/users/UsersTable";
 import { useEffect, useState } from "react";
-import { endpoints } from "../components/config/endpoints";
-import { DataService } from "../components/config/DataService";
+// import { endpoints } from "../components/config/endpoints";
+// import { DataService } from "../components/config/DataService";
 
 const orderStats = {
   totalOrders: "1,234",
@@ -20,20 +20,20 @@ const orderStats = {
 
 const OrdersPage = () => {
 
-  const [apiData, setApiData] = useState();
-  const fetchData = async () => {
-    const response = await DataService.get(endpoints.treated);
-    // console.log(response, "havolalar");
-    setApiData(response?.results);
-    // console.log(response?.results);
+  // const [apiData, setApiData] = useState();
+  // const fetchData = async () => {
+  //   const response = await DataService.get(endpoints.treated);
+  //   // console.log(response, "havolalar");
+  //   setApiData(response?.results);
+  //   // console.log(response?.results);
 
-  };
-  useEffect(() => {
-    fetchData();
+  // };
+  // useEffect(() => {
+  //   fetchData();
 
 
-  }, []);
-  //
+  // }, []);
+  // //
 
   return (
     <div className='flex-1 relative z-10 overflow-auto'>
@@ -62,7 +62,8 @@ const OrdersPage = () => {
 					<OrderDistribution />
 				</div> */}
 
-        <UsersTable apiData={apiData} />
+        {/* user tabel faqat */}
+        {/* <UsersTable apiData={apiData} /> */}
 
 
         {/* <OrdersTable /> */}

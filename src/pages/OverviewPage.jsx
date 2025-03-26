@@ -7,26 +7,26 @@ import SalesOverviewChart from "../components/overview/SalesOverviewChart";
 import CategoryDistributionChart from "../components/overview/CategoryDistributionChart";
 import SalesChannelChart from "../components/overview/SalesChannelChart";
 import UsersTable from "../components/users/UsersTable";
-import { endpoints } from "../components/config/endpoints";
+// import { endpoints } from "../components/config/endpoints";
 import { useEffect, useState } from "react";
-import { DataService } from "../components/config/DataService";
+// import { DataService } from "../components/config/DataService";
 
 const OverviewPage = () => {
 
-  const [apiData, setApiData] = useState();
-  const fetchData = async () => {
-    const response = await DataService.get(endpoints.treatment);
-    // console.log(response, "havolalar");
-    setApiData(response?.results);
-    // console.log(response?.results);
+  // const [apiData, setApiData] = useState();
+  // const fetchData = async () => {
+  //   const response = await DataService.get(endpoints.treatment);
+  //   // console.log(response, "havolalar");
+  //   setApiData(response?.results);
+  //   // console.log(response?.results);
 
-  };
-  useEffect(() => {
-    fetchData();
+  // };
+  // useEffect(() => {
+  //   fetchData();
 
 
-  }, []);
-  //
+  // }, []);
+  // //
 
   return (
     <div className='flex-1 overflow-auto relative z-10'>
@@ -53,7 +53,9 @@ const OverviewPage = () => {
 					<CategoryDistributionChart />
 					<SalesChannelChart />
 				</div> */}
-        <UsersTable apiData={apiData} />
+
+        {/* usertabel ekan  */}
+        {/* <UsersTable apiData={apiData} /> */}
 
       </main>
     </div>
