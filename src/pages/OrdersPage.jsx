@@ -8,9 +8,8 @@ import OrderDistribution from "../components/orders/OrderDistribution";
 import OrdersTable from "../components/orders/OrdersTable";
 import UsersTable from "../components/users/UsersTable";
 import { useEffect, useState } from "react";
-// import { endpoints } from "../components/config/endpoints";
-// import { DataService } from "../components/config/DataService";
-
+import { DataService } from "../config/DataService";
+import { endpoints } from "../config/endpoinds";
 const orderStats = {
   totalOrders: "1,234",
   pendingOrders: "56",
@@ -20,19 +19,19 @@ const orderStats = {
 
 const OrdersPage = () => {
 
-  // const [apiData, setApiData] = useState();
-  // const fetchData = async () => {
-  //   const response = await DataService.get(endpoints.treated);
-  //   // console.log(response, "havolalar");
-  //   setApiData(response?.results);
-  //   // console.log(response?.results);
+  const [apiData, setApiData] = useState();
+  const fetchData = async () => {
+    const response = await DataService.get(endpoints.treated);
+    // console.log(response, "havolalar");
+    setApiData(response?.results);
+    // console.log(response?.results);
 
-  // };
-  // useEffect(() => {
-  //   fetchData();
+  };
+  useEffect(() => {
+    fetchData();
 
 
-  // }, []);
+  }, []);
   // //
 
   return (

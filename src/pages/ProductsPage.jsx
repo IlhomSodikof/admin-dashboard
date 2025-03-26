@@ -9,25 +9,24 @@ import SalesTrendChart from "../components/products/SalesTrendChart";
 import ProductsTable from "../components/products/ProductsTable";
 import UsersTable from "../components/users/UsersTable";
 import { useContext, useEffect, useState } from "react";
-// import { endpoints } from "../components/config/endpoints";
 import { GlobalContext } from "../components/context/GlobalContext";
-// import { DataService } from "../components/config/DataService";
-
+import { DataService } from "../config/DataService";
+import { endpoints } from "../config/endpoinds";
 
 const ProductsPage = () => {
-  // const [apiData, setApiData] = useState();
-  // const fetchData = async () => {
-  //   const response = await DataService.get(endpoints.treatment);
-  //   // console.log(response, "havolalar");
-  //   setApiData(response?.results);
-  //   // console.log(response?.results);
+  const [apiData, setApiData] = useState();
+  const fetchData = async () => {
+    const response = await DataService.get(endpoints.debtors)
+    // console.log(response, "havolalar");
+    setApiData(response?.results);
+    // console.log(response?.results);
 
-  // };
-  // useEffect(() => {
-  //   fetchData();
+  };
+  useEffect(() => {
+    fetchData();
 
 
-  // }, []);
+  }, []);
   // //
 
 
@@ -49,7 +48,7 @@ const ProductsPage = () => {
           <StatCard name='Total Revenue' icon={DollarSign} value={"$543,210"} color='#EF4444' />
         </motion.div> */}
 
-        {/* <UsersTable apiData={apiData} /> */}
+        <UsersTable apiData={apiData} />
         {/* user tabel holos ekan */}
 
         {/* CHARTS */}

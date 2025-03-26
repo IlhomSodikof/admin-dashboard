@@ -8,8 +8,6 @@ import UserGrowthChart from "../components/users/UserGrowthChart";
 import UserActivityHeatmap from "../components/users/UserActivityHeatmap";
 import UserDemographicsChart from "../components/users/UserDemographicsChart";
 import { useEffect, useState } from "react";
-// import { endpoints } from "../components/config/endpoints";
-// import { DataService } from "../components/config/DataService";
 import { DataService } from "../config/DataService";
 import { endpoints } from "../config/endpoinds";
 

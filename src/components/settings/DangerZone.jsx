@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
+import DeleteBtn from "./DelateBtn";
 
-const DangerZone = () => {
+const DangerZone = ({ apiData }) => {
   return (
     <motion.div
       className='bg-red-900 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border border-red-700 mb-8'
@@ -15,12 +16,13 @@ const DangerZone = () => {
       </div>
       <p className='text-gray-300 mb-4'>
         Mijoz hisobini  va undagi barcha kontentni butunlay o‘chiring.</p>
-      <button
+      {/* <button
         className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded
       transition duration-200'
       >
         Profilni o'chirish
-      </button>
+      </button> */}
+      <DeleteBtn userId={apiData?.id} />
     </motion.div>
   );
 };

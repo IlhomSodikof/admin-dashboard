@@ -49,6 +49,7 @@ export default function Login() {
         console.log("Login muvaffaqiyatli:", data?.access);
         dispatch({ type: "LOGIN", payload: data?.access })// Tokenni localStorage ga saqlash
         localStorage.setItem("authToken", data?.access); // Tokenni localStorage ga saqlash
+        localStorage.setItem("authTokenRf", data?.refresh); // Tokenni localStorage ga saqlash
         setSuccessMessage("Tizimga muvaffaqiyatli kirdingiz!");
 
       } else {

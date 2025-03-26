@@ -3,20 +3,27 @@
 
 import { Bell, LogOut, Moon, Sun } from "lucide-react";
 
-import { useContext, useEffect, } from "react";
+import { useContext, useEffect, useState, } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Dropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [logoutSt, setLogoutSt] = useState(false)
   const { theme, toggleTheme, dispatch } = useContext(GlobalContext)
   const handleLogout = () => {
     localStorage.removeItem("authToken"); // Tokenni o'chirish
     dispatch({ type: "LOGOUT" }); // Contextdagi foydalanuvchini tozalash
-    navigate("/login"); // Login sahifasiga yo'naltirish
+    setLogoutSt(true)
+    // navigate("/login"); // Login sahifasiga yo'naltirish
   };
+  useEffect(() => {
+    if (logoutSt) {
+      navigate("/login");
+    }
 
+  }, [logoutSt])
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
