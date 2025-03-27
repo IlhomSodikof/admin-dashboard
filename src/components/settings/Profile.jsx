@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 // import { DataService } from "../config/DataService";
 
 const Profile = ({ apiData }) => {
-  // bu comentdan chiqarilsin ////////////////
-  // const Profile = () => {
+
   const route = useParams()
   console.log("ichkarida", apiData);
 
@@ -66,7 +65,7 @@ const Profile = ({ apiData }) => {
     <>
       {isEditing ? (
         <SettingSection icon={User} title={"Mijoz malumotlari"}>
-          <div className='flex flex-col sm:flex-row justify-around gap-10 items-center'>
+          <div className='flex flex-col sm:flex-row justify-around gap-10 w-full items-center'>
             <div className="flex items-center flex-col gap-1">
               <img
                 src={apiData?.photo}

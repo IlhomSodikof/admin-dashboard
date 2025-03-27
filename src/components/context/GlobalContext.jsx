@@ -56,15 +56,19 @@ export function GlobalContextProvider({ children }) {
 
   })
   const [theme, setTheme] = useState("light");
+  const [themeSd, setThemeSd] = useState("Mijozlar");
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
+  const toggleSidebarMenu = (e) => {
+    setThemeSd(e);
+  };
 
 
   return (
-    <GlobalContext.Provider value={{ theme, toggleTheme, ...state, dispatch, }}>
+    <GlobalContext.Provider value={{ theme, toggleTheme, themeSd, toggleSidebarMenu, ...state, dispatch, }}>
       {children}
     </GlobalContext.Provider>
   );

@@ -9,7 +9,7 @@ const Security = ({ apiData, title }) => {
     <SettingSection title={title} >
 
       <div className='mt-4 text-base-content'>
-        <p class="text-base md:text-lg lg:text-xl font-medium text-base-content leading-relaxed break-words max-w-full">
+        <p class="text-base md:text-lg lg:text-[15px] font-medium text-base-content leading-relaxed break-words max-w-full">
           {apiData}
         </p>
 

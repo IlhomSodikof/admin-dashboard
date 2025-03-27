@@ -11,7 +11,7 @@ const DangerZone = ({ apiData }) => {
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <div className='flex items-center mb-4'>
-        <Trash2 className='text-red-400 mr-3' size={24} />
+        <Trash2 className='text-white mr-3' size={24} />
         <h2 className='text-xl font-semibold text-gray-100'>Xavfli hudud (Danger Zone)</h2>
       </div>
       <p className='text-gray-300 mb-4'>

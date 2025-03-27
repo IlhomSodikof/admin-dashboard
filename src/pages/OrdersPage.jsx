@@ -1,4 +1,4 @@
-import { CheckCircle, Clock, DollarSign, ShoppingBag } from "lucide-react";
+import { CheckCircle, Clock, DollarSign, Search, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Header from "../components/common/Header";
@@ -62,7 +62,25 @@ const OrdersPage = () => {
 				</div> */}
 
         {/* user tabel faqat */}
-        {/* <UsersTable apiData={apiData} /> */}
+        {/* USER TABLE */}
+        <motion.div className="className='p-6'
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}">
+          <div className='flex justify-between items-center mb-6 px-6'>
+            <h2 className='text-xl font-semibold text-base-content'>Mijozlar</h2>
+            <div className='relative'>
+              <input
+                type='text'
+                placeholder='Search users...'
+                className=' text-base-content bg-eleg placeholder-gray-400 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+              // style={{ backgroundColor: theme == "light" ? "#ecf2f7" : "#1f1a2a87" }}
+              />
+              <Search className='absolute left-3 top-2.5 text-gray-400' size={18} />
+            </div>
+          </div>
+          <UsersTable apiData={apiData} />
+        </motion.div>
 
 
         {/* <OrdersTable /> */}

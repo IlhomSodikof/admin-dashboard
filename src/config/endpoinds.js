@@ -4,5 +4,7 @@ export const endpoints = {
   treated: "/monitoring/patients/treated/",
   treatment: "/monitoring/patients/under-treatment/",
   statistic: "/monitoring/patients/statistics/",
+  userCount: "/monitoring/tomorrow-appointments-count/",
+  userCountNs: "/monitoring/tomorrow-appointments/",
   patientByid: (id) => `/monitoring/patients/${id}/`,
 };

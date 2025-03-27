@@ -3,27 +3,35 @@
 
 import { Bell, LogOut, Moon, Sun } from "lucide-react";
 
-import { useContext, useEffect, useState, } from "react";
+import { useCallback, useContext, useEffect, useState, } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Dropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";
+import NotificationDropdown from "./NotificationDropdown";
+import Calendar from "./Calendar";
 
 const Header = () => {
   const navigate = useNavigate();
   const [logoutSt, setLogoutSt] = useState(false)
   const { theme, toggleTheme, dispatch } = useContext(GlobalContext)
-  const handleLogout = () => {
-    localStorage.removeItem("authToken"); // Tokenni o'chirish
-    dispatch({ type: "LOGOUT" }); // Contextdagi foydalanuvchini tozalash
-    setLogoutSt(true)
-    // navigate("/login"); // Login sahifasiga yo'naltirish
-  };
-  useEffect(() => {
-    if (logoutSt) {
-      navigate("/login");
-    }
+  // const handleLogout = () => {
+  //   localStorage.removeItem("authToken"); // Tokenni o'chirish
+  //   dispatch({ type: "LOGOUT" }); // Contextdagi foydalanuvchini tozalash
+  //   setLogoutSt(true)
+  //   navigate("/login"); // Login sahifasiga yo'naltirish
+  // };
+  // useEffect(() => {
+  //   if (logoutSt) {
+  //     navigate("/login");
+  //   }
 
-  }, [logoutSt])
+  // }, [logoutSt, handleLogout])
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("authToken");
+    dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  }, [navigate]);
+
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -44,21 +52,22 @@ const Header = () => {
           <Dropdown />
           {/* </div> */}
 
-
-          <label className="swap swap-rotate items-center ">
+          <div className=" flex justify-center items-center rounded-full"><label className="swap swap-rotate ">
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" onClick={() => toggleTheme("eee")} />
             <Sun
               size={20}
-              className="swap-off text-base-content"
+              className="swap-off text-orange-500"
             />
             <Moon
               size={20}
-              className=" swap-on text-base-content"
+              className=" swap-on text-orange-500"
             />
 
-          </label>
+          </label></div>
 
+
+          <NotificationDropdown dropdownOpen={logoutSt} setDropdownOpen={setLogoutSt} />
 
           <span className="px-5 text-sm font-bold text-base-content">Name family</span>
           {/* <button className="size-8 overflow-hidden rounded-full">

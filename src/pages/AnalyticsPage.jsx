@@ -7,7 +7,7 @@ import ProductPerformance from "../components/analytics/ProductPerformance";
 import UserRetention from "../components/analytics/UserRetention";
 import CustomerSegmentation from "../components/analytics/CustomerSegmentation";
 import AIPoweredInsights from "../components/analytics/AIPoweredInsights";
-import Login from "./Login";
+
 
 const AnalyticsPage = () => {
   return (
@@ -15,7 +15,7 @@ const AnalyticsPage = () => {
       <Header title={"Analytics Dashboard"} />
 
       <main className='max-w-7xl mx-auto py-6 px-4 lg:px-8'>
-        <Login />
+
       </main>
     </div>
   );
